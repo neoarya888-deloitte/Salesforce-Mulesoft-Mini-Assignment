@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:os="http://www.mulesoft.org/schema/mule/os"
+	xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd
+http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/current/mule-os.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+
+
+	<flow name="mule-salesforce-mini-assignmentFlow1" doc:id="ef97fe21-d9ab-4c0b-b084-e39b0d22227d">
+		<http:listener doc:name="Listener" doc:id="0e0d8e44-cbf6-4faf-9731-954955571571" config-ref="HTTP_Listener_config" path="api/salesforce/employee/create" />
+		<salesforce:create type="Hashedin_Employee__c" doc:name="Create" doc:id="02251a93-c9b5-498b-bb45-298bae3bff97" config-ref="Salesforce_Config" />
+		<ee:transform doc:name="Transform Message" doc:id="86a4df4a-0d90-48f4-b34f-6c46aa7702a6">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="mule-salesforce-mini-assignmentFlow2" doc:id="4bb3cfeb-f631-482b-8ef4-f57c0a6c3be1" >
+		<http:listener doc:name="Listener" doc:id="160b8c1b-1717-4a6d-babd-c0ad643195b4" config-ref="HTTP_Listener_config" path="api/salesforce/employee/get" />
+		<salesforce:query doc:name="Query" doc:id="082f5e92-9e2f-4e28-b7fe-78dca825fcec" config-ref="Salesforce_Config" >
+			<salesforce:salesforce-query ><![CDATA[select empid__c, Name, Id, location__c, salary__c from Hashedin_Employee__c where empid__c=:id]]></salesforce:salesforce-query>
+			<salesforce:parameters ><![CDATA[#[{
+	id: attributes.queryParams.id
+}]]]></salesforce:parameters>
+		</salesforce:query>
+		<ee:transform doc:name="Transform Message" doc:id="013c94c9-8043-403b-af6a-cef37bec8b7e" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="mule-salesforce-mini-assignmentFlow3" doc:id="4ad8f357-c523-4f35-ac56-0e932af5422b" >
+		<http:listener doc:name="Listener" doc:id="ca1be6f5-3d87-4e9a-81b8-a6a6226f9014" config-ref="HTTP_Listener_config" path="api/salesforce/employee/update" allowedMethods="PUT"/>
+		<salesforce:update doc:name="Update" doc:id="69c29e22-e347-4ef1-be68-b3c3c3211d26" config-ref="Salesforce_Config" type="Hashedin_Employee__c"/>
+		<ee:transform doc:name="Transform Message" doc:id="bf8a7d86-8ebc-4725-90ec-7b15a9d3a037" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="mule-salesforce-mini-assignmentFlow4" doc:id="8d289dee-2100-4b3e-b42b-8bc0e5c95ad2" >
+		<http:listener doc:name="Listener" doc:id="5243e688-656b-4a48-9775-cd5cf85f41ad" config-ref="HTTP_Listener_config" path="api/salesforce/employee/delete" allowedMethods="DELETE"/>
+		<salesforce:delete doc:name="Delete" doc:id="bd5ad8be-6efd-4e78-b4be-afbe8f0d0fcd" config-ref="Salesforce_Config">
+			<salesforce:ids ><![CDATA[#[payload.id]]]></salesforce:ids>
+		</salesforce:delete>
+		<ee:transform doc:name="Transform Message" doc:id="faba5d0c-4553-47e5-9ee8-439f15712ea4" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

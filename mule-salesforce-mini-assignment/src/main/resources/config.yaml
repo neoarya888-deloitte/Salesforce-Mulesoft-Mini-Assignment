@@ -1,0 +1,9 @@
+http:
+  host: "localhost"
+  port: "8081"
+  readtimeout: "30000"
+
+sf:
+  id: "neoarya@hid.sandbox"
+  pass: "Batman@123"
+  token: "GBBcyQHgoBURUmkzRgqc8XDF8"
