@@ -1,0 +1,349 @@
+{
+	"info": {
+		"_postman_id": "2fbffa22-b0f6-42f1-879f-d2ede0bab082",
+		"name": "Salesforce-Mulesoft-MINI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17490400"
+	},
+	"item": [
+		{
+			"name": "/employee/get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/salesforce/employee/get?id=10003",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"salesforce",
+						"employee",
+						"get"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "10003"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/salesforce/employee/get?id=10003",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"salesforce",
+								"employee",
+								"get"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "10003"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "185"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Jul 2023 21:05:59 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"empid__c\": \"10003.0\",\n        \"location__c\": \"Gurgaon\",\n        \"Id\": \"a005j00000Lt3RiAAJ\",\n        \"type\": \"Hashedin_Employee__c\",\n        \"salary__c\": \"90000.0\",\n        \"Name\": \"Garima\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/employee/create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"empid__c\": 10006,\r\n        \"Name\": \"Jason\",\r\n        \"location__c\": \"Mumbai\",\r\n        \"salary__c\": 88000\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/salesforce/employee/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"salesforce",
+						"employee",
+						"create"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Example",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"empid__c\": 10006,\r\n        \"Name\": \"Jason\",\r\n        \"location__c\": \"Mumbai\",\r\n        \"salary__c\": 88000\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/salesforce/employee/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"salesforce",
+								"employee",
+								"create"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "331"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Jul 2023 20:58:56 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": null,\n    \"items\": [\n        {\n            \"exception\": null,\n            \"message\": null,\n            \"payload\": {\n                \"success\": true,\n                \"id\": \"a005j00000Lt3eLAAR\",\n                \"errors\": []\n            },\n            \"id\": \"a005j00000Lt3eLAAR\",\n            \"statusCode\": null,\n            \"successful\": true\n        }\n    ],\n    \"successful\": true\n}"
+				}
+			]
+		},
+		{
+			"name": "/employee/update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"empid__c\": 10006,\r\n        \"Name\": \"Jason\",\r\n        \"location__c\": \"Mumbai\",\r\n        \"salary__c\": 88000\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/salesforce/employee/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"salesforce",
+						"employee",
+						"update"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Example",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"empid__c\": 10002,\r\n        \"Name\": \"Kabir\",\r\n        \"location__c\": \"Pune\",\r\n        \"salary__c\": 88000,\r\n        \"Id\": \"a005j00000Lt3RdAAJ\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/salesforce/employee/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"salesforce",
+								"employee",
+								"update"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "331"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Jul 2023 21:11:32 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": null,\n    \"items\": [\n        {\n            \"exception\": null,\n            \"message\": null,\n            \"payload\": {\n                \"success\": true,\n                \"id\": \"a005j00000Lt3RdAAJ\",\n                \"errors\": []\n            },\n            \"id\": \"a005j00000Lt3RdAAJ\",\n            \"statusCode\": null,\n            \"successful\": true\n        }\n    ],\n    \"successful\": true\n}"
+				}
+			]
+		},
+		{
+			"name": "/employee/delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\":\"a005j00000Lt3RdAAJ\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/salesforce/employee/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"salesforce",
+						"employee",
+						"delete"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Example",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\":\"a005j00000Lt3RdAAJ\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/salesforce/employee/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"salesforce",
+								"employee",
+								"delete"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "331"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Jul 2023 21:20:54 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": null,\n    \"items\": [\n        {\n            \"exception\": null,\n            \"message\": null,\n            \"payload\": {\n                \"success\": true,\n                \"id\": \"a005j00000Lt3RdAAJ\",\n                \"errors\": []\n            },\n            \"id\": \"a005j00000Lt3RdAAJ\",\n            \"statusCode\": null,\n            \"successful\": true\n        }\n    ],\n    \"successful\": true\n}"
+				}
+			]
+		}
+	]
+}
